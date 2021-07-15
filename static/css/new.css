@@ -1,0 +1,36 @@
+body{
+    background: rgb(219, 247, 244);
+}
+.mybody{
+    /* background: url(https://media.gettyimages.com/videos/rural-natural-background-video-id1181753830?s=640x640); */
+    background-image: url(/static/image/bac.jpg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    
+    /* opacity: 0.5; */
+
+}
+label{
+    /* margin-left: 50px; */
+    color:black;
+    background-color: rgb(192, 228, 192);
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    text-align: center;
+    font-weight: bolder;
+    text-align: center !important;
+    /* background-color: white; */
+    
+    /* border: 1px solid red; */
+    border-radius: 20%;
+}
+
+input[type=text]{
+    /* text-align: center; */
+    text-transform: uppercase;
+}
+.submit:hover{
+    width: 400px;
+    background-color: rgb(116, 207, 116);
+    
+}

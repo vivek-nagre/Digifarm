@@ -1,0 +1,27 @@
+footer{
+    color: white;
+    background-color: black;
+
+    text-transform: capitalize;
+    padding: 10px 0px;
+    line-height: 25px;
+
+}
+footer a {
+    text-decoration: none;
+    text-shadow: 1px 1px red;
+    
+}
+footer a:hover{
+    color: white;
+    font-weight: bold;
+    font-size: 19px;
+}
+.form-signin{
+    
+    background-color: YELLOW;
+}
+.center_cart_BTN{
+    
+    margin-left: 30%;
+}

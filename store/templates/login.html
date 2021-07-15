@@ -1,0 +1,60 @@
+<title>login</title>
+{%extends 'base.html' %}
+<!-- {% load static%} -->
+{%block vivek %}
+
+<style>
+  body {
+    background-color: rgb(212, 241, 241);
+  }
+
+  .form {
+    background-color: aliceblue;
+  }
+</style>
+<!-- css -->
+
+<div class="mybody container">
+
+
+
+
+
+
+  <img class="d-grid mx-auto mb-4" src="{%static 'image/ks.png'%}">
+
+  <div class="container col-lg-5 h4 text-danger mt-2 border rounded pt-4 mt-2">
+    <div class="m-4 p-4 mx-auto">
+      <div>
+        <!-- form-->
+        <form action="/login/" method="POST" class="text-dark form">
+          {% csrf_token %}
+          {%if error%}
+          <div class="alert alert-danger text-center" role="alert">
+            {{error}}
+
+          </div>
+          {%endif%}
+
+          <div class="mb-3 text-dark">
+            <label for="exampleInputEmail1" class="form-label ">Email:</label>
+            <input type="email" class="form-control emtxt" name='email' placeholder="abc@gmail.com" required>
+
+          </div>
+          <!-- password -->
+
+
+          <div class="mb-3">
+            <label for="exampleInputPassword1" class="form-label">Password:</label>
+            <input type="password" class="form-control" name="password" placeholder="****" required>
+          </div>
+          <!-- submit button -->
+          <button type="submit" class="btn btn-primary d-grid col-6 mx-auto p-1 m-2 submit" data-bs-toggle="modal"
+            data-bs-target="#staticBackdrop">Log in</button>
+
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+{%endblock%}

@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+{% load static %}
+
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=\, initial-scale=1.0">
+    <title>Welcome</title>
+
+    <!-- common css -->
+    <!-- <link rel="stylesheet" type="text/css" href='{% static ' css/common.css' %}?{% now "U" %}'> -->
+    <link rel="stylesheet" href="{%static 'css/common.css'%}">
+    <!--min.css file pre downloaded in system  -->
+    <link rel="stylesheet" href="{%static 'css\bootstrap.min.css' %}">
+
+</head>
+
+<body>
+    <!-- old method -->
+    <!-- <img src="{%static 'product\me.jpg' %}" > -->
+    <!-- nav bar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark p-2 h5">
+        <div class="container-fluid">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse " id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0 text-danger ">
+                    <li class="nav-item">
+
+                        <a class="nav-link  active" aria-current="/index" href="/">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link " href="/about">about</a>
+                    </li>
+                    <li class="nav-item">
+
+                        <a class="nav-link " href="/home" tabindex="-1" aria-disabled="true">test</a>
+                    </li>
+                    <li class="nav-item">
+
+                        <a class="nav-link " href="/contact" tabindex="-1" aria-disabled="true">contact us</a>
+
+                    </li>
+                </ul>
+                <form class="d-flex" style="color: white;">
+
+                    {%if request.session.cust_id%}
+                    <!-- order -->
+                    <!-- logout button -->
+
+                    <button class="btn btn-primary mx-2 " type="submit"><a href="/cart"
+                            style="text-decoration: none; color:white"> Cart </a> </button>
+
+                    <button class="btn btn-warning mx-2 " type="submit"><a href="/my_order"
+                            style="text-decoration: none; color:black"> order </a> </button>
+
+
+                    <button class="btn btn-danger mx-2 " type="submit"><a href="/logout"
+                            style="text-decoration: none; color:white"> Logout </a> </button>
+                    {%else%}
+
+                    <button class="btn btn-primary mx-2 " type="submit"><a href="/cart"
+                            style="text-decoration: none; color:white"> Cart </a> </button>
+                    <button class="btn btn-warning mx-2 " type="submit"><a href="/signup "
+                            style="text-decoration: none; color:white"> sign-up</a> </button>
+                    <button class="btn btn-danger mx-1" type="submit"><a href="/login "
+                            style="text-decoration: none; color:white"> Login</a></button>
+
+
+                    {%endif%}
+                </form>
+            </div>
+        </div>
+    </nav>
+
+    <!-- from here we will get our new code which reflect the conten changes in the page and nav bar remains same through out pages when we are goiing to extends  the web pages-->
+
+    {%block vivek%} {%endblock%}
+
+    <footer>
+        <p class="text-center">all right reserved <br>
+            design and devloped by <a href="http://viveknagre.tk/">vivek-nagre</a></p>
+    </footer>
+
+
+    <!-- offline min file of js -->
+    <script src="{%static 'js\bootstrap.min.js' %}"></script>
+    <script src="{%static 'js\jquery-3.5.1.min.js' %}"></script>
+
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js">
+    </script>
+
+</body>
+
+</html>

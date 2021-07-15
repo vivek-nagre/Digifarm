@@ -1,0 +1,84 @@
+<title>signup</title>
+{%extends 'base.html' %}
+<!-- {% load static%} -->
+{%block vivek %}
+<link rel="stylesheet" type="text/css" href='{% static 'css/new.css' %}?{% now "U" %}'>
+
+<!-- css -->
+
+<div class="mybody container">
+  
+
+<img class="d-grid mx-auto" src="{%static 'image/ks.png'%}" >
+
+<div class="container col-lg-5 h4 text-danger">
+ <div class="m-4 p-4 mx-auto">
+     <div>
+         <!-- form-->
+         <form action="/signup/ " method="POST">
+          {% csrf_token %}
+          {%if error%}
+          <div class="alert alert-danger text-center" role="alert">
+            {{error}}
+
+          </div>
+          {%endif%}
+                <!-- name -->
+                <div class="mb-3">
+                    <label for="exampleInputEmail1" class="form-label">Name</label>
+                    <input type="text" value="{{values.name}}" class="form-control" name='name' required>
+                    
+                  </div>
+                  <!-- last name  -->
+                  <div class="mb-3">
+                    <label for="" class="form-label" >Last Name</label>
+                    <input type="text" value="{{values.last_name}}" class="form-control" name='last_name' required>
+                    
+                  </div>
+
+
+                  <!-- contact number -->
+                  <div class="mb-3">
+                    <label for="exampleInputEmail1" class="form-label">Contact number</label>
+                    <input type="number" class="form-control" name='contact' maxlength="10" required>
+                    
+                  </div>
+
+            <div class="mb-3">
+              <label for="exampleInputEmail1" class="form-label">Email</label>
+              <input type="email" class="form-control" name='email' placeholder="abc@gmail.com" required>
+              
+            </div>
+            <!-- password -->
+
+
+            <div class="mb-3">
+              <label for="exampleInputPassword1" class="form-label">Password</label>
+              <input type="password" class="form-control" name="password" placeholder="****" required>
+            </div>
+            
+            
+            <!-- submit button -->
+            <button type="submit" class="btn btn-primary d-grid col-6 mx-auto p-1 m-2 submit">Sign UP</button>
+            
+
+            <!-- modal button -->
+            <!-- <button type="button" class="btn btn-primary d-grid col-6 mx-auto p-1 m-2" data-toggle="modal" data-target="#exampleModal" >
+              sign up
+            </button> -->
+          </form>
+        </div>
+        <a href="/login" class="h5  btn btn-primary">Alredy registered?</a>
+      </div>
+    </div>
+    
+  </div>
+
+  
+
+
+
+  
+{%endblock%}
+
+

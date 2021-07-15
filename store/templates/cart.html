@@ -1,0 +1,85 @@
+<title>Your cart</title>
+{%extends 'base.html'%}
+{%load cart_item%}
+{%block vivek%}
+<h3 class="text-center text-danger bold">welcome {{name}} lets Proceed</h3>
+
+
+<div class="container-fluid  table-bordered p-4 m-4 mx-auto">
+    <table class="table">
+        <thead class="text-center">
+            <tr class="text-capitalize font-weight-bold ">
+                <th>SR.No</th>
+                <!-- <th>image</th> -->
+                <th>Name</th>
+                <th>Price</th>
+                <th>Quantity</th>
+                <th>total</th>
+            </tr>
+        </thead>
+        <tbody class="text-center">
+            {%for my in selection%}
+            <tr class="text-capitalize font-weight-bold ">
+                <td>{{forloop.counter}}</td>
+                <!-- <td><img style="height:60px; border-radius:50%" src="{{my.img.url}}" ></td> -->
+                <td> {{my.name}}</td>
+                <td> {{my.price}}</td>
+                <td> {{my|items_no:request.session.cart}}</td>
+                <td> {{my|item_total:request.session.cart}} rs</td>
+
+            </tr>
+            {%endfor%}
+        </tbody>
+        <tfoot class="text-danger text-center">
+
+            <th colspan="3" class="text-danger  text-center "> Total</th>
+            <th class=""> {{selection|total_cart_item:request.session.cart}}</th>
+            <th class="text-weight bold">
+                <h5>{{selection|total_cart_amount:request.session.cart}} Rs<h5>
+            </th>
+        </tfoot>
+    </table>
+    <hr>
+    <div class="m-3 p-3">
+        <!-- Button trigger modal -->
+        <center>
+            <a href="#" class="btn btn-outline-danger border col-lg-3" data-toggle="modal"
+                data-target="#modelId">Proceed to buy </a>
+        </center>
+
+    </div>
+</div>
+
+<!-- Modal -->
+
+<div class="modal fade" id="modelId" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Modal title</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form action="/checkout" method="POST">
+                    {%csrf_token%}
+                    <div class="form-group">
+                        <label for="">Address</label>
+                        <input type="text" name="Address" id="" class="form-control" placeholder="Delevary address"
+                            aria-describedby="helpId" value="balaji nagar">
+                    </div>
+                    <br>
+                    <div class="form-group">
+                        <label for="">Mobile </label>
+                        <input type="mobile" name="contact" maxlength="10" id="" class="form-control"
+                            placeholder="Mobile number" aria-describedby="helpId" value="9822209466">
+                    </div>
+                    <input type="submit" value="Check-out" class="btn btn-primary  mx-auto mx-auto mt-3 col-lg-6">
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+{%endblock%}

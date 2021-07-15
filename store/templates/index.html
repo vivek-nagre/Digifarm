@@ -1,0 +1,125 @@
+{%extends 'base.html'%}
+{%block vivek%}
+{% load cart_item %}
+
+<style>
+  .myitem img {
+
+    border-radius: 50px;
+
+  }
+
+  .cati:hover {
+    background-color: black;
+    color: white;
+    text-shadow: 2px 1px red;
+    border-radius: 50px;
+  }
+</style>
+
+<!-- brand name -->
+<div class="text-center h1 text-danger">{{name}}</div>
+
+<!-- want to add image -->
+
+
+<!-- category side bar -->
+<div class="container-fluid mt-3 myitem">
+  <div class="row">
+
+    <!-- filter  -->
+    <div class="col-lg-2 mx-auto">
+      <div class="list-group">
+        <a href="/" class="list-group-item list-group-item-action  text-capitalize h5 active " aria-current="true">
+          All objects
+        </a>
+        <!-- category list  -->
+        {%for cat in lst%}
+
+        <a href="/?cat={{cat.id}}" class="list-group-item list-group-item-action  text-capitalize h5 cati "
+          aria-current="true">
+          {{cat.name}}
+        </a>
+        {%endfor%}
+
+      </div>
+    </div>
+
+    <!-- all product cards -->
+    <div id="product " class="col-lg-10 mx-auto">
+      <div class="row mx-auto">
+
+        <!-- product rendering  -->
+        {%if not item%}
+
+        <img src="/static/image/no.jpg" height="450px">
+        {%else%}
+        {%for x in item%}
+
+        <div class="card mx-auto mb-3 " id="{{x.id}}" style="width: 18rem;">
+          <!-- fetching image from the database  -->
+          <img style="height: 200px" src="{{x.img.url}}">
+
+          <div class="card-body mb-0">
+            <h5 class="card-title text-center text-capitalize">{{x.name}}</h5>
+            <!-- <p class="card-text ">{{x.disc}}.</p>  -->
+            <p class="card-text mb-3 text-center"><b>Price :{{x.price}}/kg</b></p>
+
+
+          </div>
+
+          <!-- cart incriment and decriment option -->
+
+          <div class="card-footer row p-0  no-gutter">
+            {%if x|item_in_cart:request.session.cart%}
+            <div class="row">
+
+              <div class="col row m-1">
+                <form action="/#{{x.id}}" method="post">
+                  {%csrf_token%}
+                  <input type="text" name="product" value="{{x.id}}" hidden>
+                  <input type="text" name="remove" value="True" hidden>
+                  <input type="submit" value="-" class="btn px-3 btn-primary mx-auto">
+                </form>
+              </div>
+              <div class=" col rounded-bottom text-center mt-2 text-danger font-weight-bold">
+                <div style="font-size: larg; font-weight:bolder">
+                  {{x|items_no:request.session.cart}} KG </div>
+              </div>
+
+              <div class="col row m-1">
+                <form action="/#{{x.id}}" method="post">
+                  {%csrf_token%}
+                  <input type="text" name="product" value="{{x.id}}" hidden>
+                  <input type="submit" value="+" class="btn px-3 btn-primary mx-auto">
+                </form>
+              </div>
+
+            </div>
+
+            {%else%}
+            <form action="/#{{x.id}}" method="POST">
+              {% csrf_token %}
+              <input type="text" value="{{x.id}}" hidden name="product">
+
+              <div class="center_cart_BTN ">
+                <input type="submit" class="btn btn-primary mb-1 mt-1 py-0 mx-auto" value="Add to cart">
+              </div>
+            </form>
+            {%endif%}
+
+
+          </div>
+        </div>
+        {%endfor %}
+
+        {%endif%}
+
+
+
+      </div>
+    </div>
+  </div>
+</div>
+
+{%endblock%}

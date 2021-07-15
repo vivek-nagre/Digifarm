@@ -1,0 +1,38 @@
+<title>Your cart</title>
+{%extends 'base.html'%}
+{%load cart_item%}
+{%block vivek%}
+<h3 class="text-center text-danger bold">welcome {{name}} in your orders section</h3>
+
+
+<div class="container-fluid  table-bordered p-4 m-4 mx-auto">
+    <table class="table">
+        <thead class="text-center">
+            <tr class="text-capitalize font-weight-bold ">
+                <th>SR.No</th>
+                <!-- <th>image</th> -->
+                <th>Name</th>
+                <th>Price</th>
+                <th>Quantity</th>
+                <th>total</th>
+            </tr>
+        </thead>
+        <tbody class="text-center">
+            {%for my in orders%} 
+            <tr class="text-capitalize font-weight-bold ">
+                <td>{{forloop.counter}}</td>
+                <!-- <td><img style="height:60px; border-radius:50%" src="{{my.img.url}}" ></td> -->
+                <td> {{my.product}}</td>
+
+                <!-- <td> {{my.price}}</td>
+                <td> {{my|items_no:request.session.cart}}</td>
+                <td> {{my|item_total:request.session.cart}} rs</td> -->
+
+            </tr>
+            {%endfor%}
+        </tbody>
+    </table>
+    <hr>
+</div>
+
+{%endblock%}
