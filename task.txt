@@ -1,0 +1,5 @@
+vivek : backend  views db structure  || akash database 
+amar : front end 
+Pooja : documentation ppt
+pratiksha : lay out design ppt 
+sarita : documntation along with pooja 
